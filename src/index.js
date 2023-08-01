@@ -1,4 +1,3 @@
-// Express hello world with esmodule imports
 import express from 'express'
 
 const app = express()
