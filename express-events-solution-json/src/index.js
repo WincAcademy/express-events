@@ -4,6 +4,7 @@ import eventsRouter from './routes/events.js'
 import categoriesRouter from './routes/categories.js'
 
 const app = express()
+app.use(express.json())
 
 // Resource routes
 app.use('/users', usersRouter)
