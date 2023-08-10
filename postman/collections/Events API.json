@@ -1,0 +1,1677 @@
+{
+	"info": {
+		"_postman_id": "2e16a5d8-f11a-4b65-8a8b-60baab665558",
+		"name": "Events API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "17255397-2e16a5d8-f11a-4b65-8a8b-60baab665558"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get all users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fd10e42e-6de7-4448-a44c-7fa0a887b818",
+								"exec": [
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is an array\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('array');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Each object in the response array has the required fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('array');",
+									"",
+									"    responseData.forEach(function (user) {",
+									"        pm.expect(user.id).to.exist.and.to.be.a('number');",
+									"        pm.expect(user.username).to.exist.and.to.be.a('string');",
+									"        pm.expect(user.password).to.exist.and.to.be.a('string');",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"id should be a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('array');",
+									"",
+									"    responseData.forEach(function (user) {",
+									"        pm.expect(user.id).to.be.a('number');",
+									"        pm.expect(user.id).to.be.at.least(0, \"id should be a non-negative integer\");",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Username is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('array');",
+									"    responseData.forEach(function (user) {",
+									"        pm.expect(user.username).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Username should not be empty\");",
+									"    });",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is an array\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('array');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Id should be a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('array');",
+									"    responseData.forEach(function (user) {",
+									"        pm.expect(user.id).to.be.a('number').and.to.be.at.least(0, \"Id should be a non-negative integer\");",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Username is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('array');",
+									"    responseData.forEach(function (user) {",
+									"        pm.expect(user.username).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "99078e16-5005-48e6-9186-c9cc77631c8a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "4d4cb2a7-f256-49d8-a8ba-564a0da534b2",
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"username\": \"john_doe\",\n        \"password\": \"p@ssw0rd1\"\n    },\n    {\n        \"id\": 2,\n        \"username\": \"jane_doe\",\n        \"password\": \"p@ssw0rd2\"\n    },\n    {\n        \"id\": 3,\n        \"username\": \"bob_smith\",\n        \"password\": \"p@ssw0rd3\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get user by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f06dd639-4716-4267-af27-749cac941f94",
+								"exec": [
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"The id is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
+									"    pm.expect(responseData.id).to.be.at.least(0);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Username is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.username).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Password is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.password).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Password should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is in an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Response has the required fields - id, username, and password\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
+									"    pm.expect(responseData.username).to.exist.and.to.be.a('string');",
+									"    pm.expect(responseData.password).to.exist.and.to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Id is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.id).to.exist;",
+									"    pm.expect(responseData.id).to.be.a('number');",
+									"    pm.expect(responseData.id).to.be.at.least(0);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Username is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.username).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Username should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Password is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.password).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Password should not be empty\");",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Response status code is 404 for non-existing id\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "00f80417-a036-4053-9778-ed9e1900ae24",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "03dfbad8-37d6-4ca8-afe6-5e3be1300ec6",
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"username\": \"john_doe\",\n    \"password\": \"p@ssw0rd1\"\n}"
+						},
+						{
+							"id": "8dd8c98b-d42f-40ac-a2da-09de68cb56f7",
+							"name": "Non-existing ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Create new user",
+					"id": "090830d9-d151-4647-98f4-d603805deda9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"john_wick\",\n    \"password\": \"p@ssw0rd999\",\n    \"name\": \"John Wick\",\n    \"image\": \"https://images2.alphacoders.com/131/1314280.jpeg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "a1ddfc80-ac75-4132-bb4c-f67066c609e3",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"john_wick\",\n    \"password\": \"p@ssw0rd999\",\n    \"name\": \"John Wick\",\n    \"image\": \"https://images2.alphacoders.com/131/1314280.jpeg\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": {{$randomUUID}},\n    \"username\": \"john_wick\",\n    \"password\": \"p@ssw0rd999\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update user by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c4a94bdf-99c8-4fa3-9d84-11d104ca9bbe",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "e98af07f-2504-405a-aae5-81b0bd3b663b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "314074f0-c0f2-4511-8226-a0478582d7b3",
+							"name": "Success (Update password)",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": {{$randomUUID}},\n    \"username\": \"john_wick\",\n    \"password\": \"newPassword123\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete user by ID",
+					"id": "37eba0a5-2a46-4c83-93ea-f4ec898cab69",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "534f7dfa-51b0-4196-b834-46f350d1ce5b",
+							"name": "Success (Delete user 2)",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"id": "c188f9d1-191d-4534-bf5c-02cbbf7e6321",
+			"description": "REST API endpoints for managing users."
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "Get all events",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5866c21a-02ad-47ab-97b0-e385631ecb87",
+								"exec": [
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is an array\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('array');",
+									"});",
+									"",
+									"",
+									"pm.test(\"The id should be a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('array');",
+									"",
+									"    responseData.forEach(function (event) {",
+									"        pm.expect(event.id).to.be.a('number').and.to.be.at.least(0, \"Id should be a non-negative integer\");",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "b5b9d67e-89f2-4bed-a055-748186f6c1d2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/events",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "4a5d1f78-3356-499b-adb1-83173c2e53f5",
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/events",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"events"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n      \"id\": 1,\n      \"createdBy\": 1,\n      \"title\": \"Trampoline party\",\n      \"description\": \"Bounce around with your friends\",\n      \"image\": \"https://i.pinimg.com/736x/3d/2f/af/3d2faf4e3188d34a9fcdc00df59e77b0.jpg\",\n      \"categoryIds\": [2],\n      \"location\": \"My back yard\",\n      \"startTime\": \"2023-03-10T18:00\",\n      \"endTime\": \"2023-03-10T17:00:00.000Z\"\n    },\n    {\n      \"id\": 2,\n      \"createdBy\": 1,\n      \"title\": \"Laser Tag mania\",\n      \"description\": \"Let's play laser tag!\",\n      \"image\": \"https://www.ctvnews.ca/polopoly_fs/1.5118552.1600965663!/httpImage/image.jpg_gen/derivatives/landscape_1020/image.jpg\",\n      \"categoryIds\": [2],\n      \"location\": \"Blinded by the Lights Laser Tag, 15 Main St.\",\n      \"startTime\": \"2023-04-06T18:46\",\n      \"endTime\": \"2023-04-06T17:46\"\n    },\n    {\n      \"id\": 3,\n      \"createdBy\": 2,\n      \"title\": \"Badminton game\",\n      \"description\": \"Hit that shuttle!\",\n      \"image\": \"https://s3.eu-west-2.amazonaws.com/ws-activestirling/production/Badminton/_1200x630_crop_center-center_none/Badminton-3.jpg\",\n      \"categoryIds\": [1, 2],\n      \"location\": \"The Park\",\n      \"startTime\": \"2023-03-15T12:00:00.000Z\",\n      \"endTime\": \"2023-03-15T13:30:00.000Z\"\n    },\n    {\n      \"id\": 4,\n      \"createdBy\": 2,\n      \"title\": \"Yoga\",\n      \"description\": \"It's a bit of a stretch.\",\n      \"image\": \"https://ymcasouthflorida.org/wp-content/uploads/2019/12/AA2I8910-scaled.jpg\",\n      \"categoryIds\": [3],\n      \"location\": \"Shavasana Yoga School\",\n      \"startTime\": \"2023-03-09T06:00:00.000Z\",\n      \"endTime\": \"2023-03-09T07:00:00.000Z\"\n    }\n  ]"
+						}
+					]
+				},
+				{
+					"name": "Get event by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f06dd639-4716-4267-af27-749cac941f94",
+								"exec": [
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"The id is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
+									"    pm.expect(responseData.id).to.be.at.least(0);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Username is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.username).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Password is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.password).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Password should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is in an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Response has the required fields - id, username, and password\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
+									"    pm.expect(responseData.username).to.exist.and.to.be.a('string');",
+									"    pm.expect(responseData.password).to.exist.and.to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Id is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.id).to.exist;",
+									"    pm.expect(responseData.id).to.be.a('number');",
+									"    pm.expect(responseData.id).to.be.at.least(0);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Username is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.username).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Username should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Password is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.password).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Password should not be empty\");",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Response status code is 404 for non-existing id\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "6279dad6-8c64-4b19-8650-c9fb3d27318c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/events/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "357ad4e1-fe83-4c22-a053-d0561abafdd3",
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/events/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"events",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"createdBy\": 1,\n    \"title\": \"Trampoline party\",\n    \"description\": \"Bounce around with your friends\",\n    \"image\": \"https://i.pinimg.com/736x/3d/2f/af/3d2faf4e3188d34a9fcdc00df59e77b0.jpg\",\n    \"categoryIds\": [2],\n    \"location\": \"My back yard\",\n    \"startTime\": \"2023-03-10T18:00\",\n    \"endTime\": \"2023-03-10T17:00:00.000Z\"\n}"
+						},
+						{
+							"id": "ac86aab1-069a-4dee-a0ae-ec67f610b276",
+							"name": "Non-existing ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/events/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"events",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Create new event",
+					"id": "e25312f0-144a-4899-a1b8-516a6e5ebbab",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"createdBy\": 1,\n      \"title\": \"Boardgame party\",\n      \"description\": \"Turn off with friends or family through playing some nice games\",\n      \"image\": \"https://image.cnbcfm.com/api/v1/image/104151701-GettyImages-143949731.jpg?\",\n      \"categoryIds\": [2],\n      \"location\": \"Townhall\",\n      \"startTime\": \"2023-03-10T18:00\",\n      \"endTime\": \"2023-03-10T17:00:00.000Z\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "a7af28ee-a904-461a-8294-1eee115c17e9",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n      \"createdBy\": 1,\n      \"title\": \"Boardgame party\",\n      \"description\": \"Turn off with friends or family through playing some nice games\",\n      \"image\": \"https://image.cnbcfm.com/api/v1/image/104151701-GettyImages-143949731.jpg?\",\n      \"categoryIds\": [2],\n      \"location\": \"Townhall\",\n      \"startTime\": \"2023-03-10T18:00\",\n      \"endTime\": \"2023-03-10T17:00:00.000Z\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/events",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"events"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": {{$randomUUID}},\n    \"createdBy\": 1,\n    \"title\": \"Trampoline party\",\n    \"description\": \"Bounce around with your friends\",\n    \"image\": \"https://i.pinimg.com/736x/3d/2f/af/3d2faf4e3188d34a9fcdc00df59e77b0.jpg\",\n    \"categoryIds\": [2],\n    \"location\": \"My back yard\",\n    \"startTime\": \"2023-03-10T18:00\",\n    \"endTime\": \"2023-03-10T17:00:00.000Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update event by ID",
+					"id": "daa56318-5891-40a4-811b-37bee7070156",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"something_unknown\": \"My Boat House\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "d02b8a2c-e9b2-4254-b63c-b31576e3acce",
+							"name": "Success (Update location)",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"something_unknown\": \"My Boat House\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/events/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"events",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"createdBy\": 1,\n    \"title\": \"Trampoline party\",\n    \"description\": \"Bounce around with your friends\",\n    \"image\": \"https://i.pinimg.com/736x/3d/2f/af/3d2faf4e3188d34a9fcdc00df59e77b0.jpg\",\n    \"categoryIds\": [2],\n    \"location\": \"City Beach\",\n    \"startTime\": \"2023-03-10T18:00\",\n    \"endTime\": \"2023-03-10T17:00:00.000Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete event by ID",
+					"id": "a56b04e3-b77b-4b8f-9a31-2d48cf7a79a1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/events/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "63eb910d-ac0c-46bb-ac4e-ed6e1489f1e1",
+							"name": "Success (Delete user 2)",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/events/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"events",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"id": "03c5b95e-1067-4213-baca-db63c1575fe7",
+			"description": "REST API endpoints for managing events."
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Get all categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5866c21a-02ad-47ab-97b0-e385631ecb87",
+								"exec": [
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is an array\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('array');",
+									"});",
+									"",
+									"",
+									"pm.test(\"The id should be a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('array');",
+									"",
+									"    responseData.forEach(function (event) {",
+									"        pm.expect(event.id).to.be.a('number').and.to.be.at.least(0, \"Id should be a non-negative integer\");",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "da3394c1-85e8-4011-8a96-ffec1f78f0f0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "cd80f4c8-048e-4c69-acea-8f399444e52e",
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								"",
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": "[\n    {\n        \"name\": \"sports\",\n        \"id\": 1\n    },\n    {\n        \"name\": \"games\",\n        \"id\": 2\n    },\n    {\n        \"name\": \"relaxation\",\n        \"id\": 3\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get category by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f06dd639-4716-4267-af27-749cac941f94",
+								"exec": [
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"The id is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
+									"    pm.expect(responseData.id).to.be.at.least(0);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Username is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.username).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Password is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.password).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Password should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is in an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Response has the required fields - id, username, and password\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
+									"    pm.expect(responseData.username).to.exist.and.to.be.a('string');",
+									"    pm.expect(responseData.password).to.exist.and.to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Id is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.id).to.exist;",
+									"    pm.expect(responseData.id).to.be.a('number');",
+									"    pm.expect(responseData.id).to.be.at.least(0);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Username is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.username).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Username should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Password is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.password).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Password should not be empty\");",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Response status code is 404 for non-existing id\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "bbeb2ce4-5572-4df9-aec2-a7121f36c83a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "d9efca2e-5b0c-4633-8a24-5cd0e73c0372",
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categories/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categories",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": "{\n    \"name\": \"sports\",\n    \"id\": 1\n}"
+						},
+						{
+							"id": "97ef383f-6160-4d4f-9a78-8fc88b85f433",
+							"name": "Non-existing ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categories/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categories",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Update category by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f06dd639-4716-4267-af27-749cac941f94",
+								"exec": [
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"The id is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
+									"    pm.expect(responseData.id).to.be.at.least(0);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Username is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.username).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Password is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.password).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Password should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is in an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Response has the required fields - id, username, and password\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
+									"    pm.expect(responseData.username).to.exist.and.to.be.a('string');",
+									"    pm.expect(responseData.password).to.exist.and.to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Id is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.id).to.exist;",
+									"    pm.expect(responseData.id).to.be.a('number');",
+									"    pm.expect(responseData.id).to.be.at.least(0);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Username is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.username).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Username should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Password is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.password).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Password should not be empty\");",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Response status code is 404 for non-existing id\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "38de3590-15e4-4b77-873c-3a720b702094",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"My favorite category\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categories/100",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories",
+								"100"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "88c82938-c603-4ec4-9386-a92940f58ac4",
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"My favorite category\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/categories/100",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categories",
+										"100"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": "{\n    \"name\": \"sports\",\n    \"id\": 1\n}"
+						},
+						{
+							"id": "f4900f6a-43b1-4adc-a906-34700abe6ea1",
+							"name": "Non-existing ID",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"My favorite category\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/categories/100",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categories",
+										"100"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Delete category by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f06dd639-4716-4267-af27-749cac941f94",
+								"exec": [
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"The id is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
+									"    pm.expect(responseData.id).to.be.at.least(0);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Username is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.username).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Password is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.password).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Password should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is in an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Response has the required fields - id, username, and password\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
+									"    pm.expect(responseData.username).to.exist.and.to.be.a('string');",
+									"    pm.expect(responseData.password).to.exist.and.to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Id is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.id).to.exist;",
+									"    pm.expect(responseData.id).to.be.a('number');",
+									"    pm.expect(responseData.id).to.be.at.least(0);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Username is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.username).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Username should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Password is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.password).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Password should not be empty\");",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Response status code is 404 for non-existing id\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "6031cb42-922a-4822-8eef-42315c319597",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories/100",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories",
+								"100"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "4beeb5e5-84b0-4018-a7d3-ec6b755662ad",
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categories/100",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categories",
+										"100"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": "{\n    \"name\": \"sports\",\n    \"id\": 1\n}"
+						},
+						{
+							"id": "2512a146-cfc2-42cf-abd9-746c8efe4821",
+							"name": "Non-existing ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categories/100",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categories",
+										"100"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Create new category",
+					"id": "eb853fd2-dac3-4571-9d1e-bea3135ed6c1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"networking\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "e358b6fd-489f-4771-a9ef-5a758f53cd16",
+			"description": "REST API endpoints for managing event categories."
+		}
+	]
+}
