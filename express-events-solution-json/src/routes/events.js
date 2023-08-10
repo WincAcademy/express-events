@@ -3,6 +3,7 @@ import getEvents from "../services/events/getEvents.js";
 import createEvent from "../services/events/createEvent.js";
 import getEventById from "../services/events/getEventById.js";
 import deleteEventById from "../services/events/deleteEventById.js";
+import updateEventById from "../services/events/updateEventById.js";
 
 const router = Router();
 
