@@ -1,7 +1,7 @@
-import eventData from '../../data/events.json' assert { type: 'json' }
+import eventData from "../../data/events.json" assert { type: "json" };
 
 const getEvents = () => {
-    return eventData.events
-}
+  return eventData.events;
+};
 
-export default getEvents
+export default getEvents;

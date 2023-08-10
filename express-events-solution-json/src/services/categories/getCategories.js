@@ -1,7 +1,7 @@
-import categoryData from '../../data/categories.json' assert { type: 'json' }
+import categoryData from "../../data/categories.json" assert { type: "json" };
 
 const getCategories = () => {
-    return categoryData.categories
-}
+  return categoryData.categories;
+};
 
-export default getCategories
+export default getCategories;
