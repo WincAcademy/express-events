@@ -503,7 +503,7 @@
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": null,
+							"_postman_previewlanguage": "Text",
 							"header": null,
 							"cookie": [],
 							"body": null
@@ -961,7 +961,7 @@
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": null,
+							"_postman_previewlanguage": "Text",
 							"header": null,
 							"cookie": [],
 							"body": null
