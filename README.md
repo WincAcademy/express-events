@@ -24,6 +24,8 @@ SENTRY_DSN=your_sentry_dsn_here
 
 Tests are created using Newman, a command-line tool that is able to automate execution of Postman-created tests. Therefore, this command will simulate more or less the same tests that we executed during the course (e.g. test if the "happy case" returns 200 or 201 status code, or it returns 404 Not found when we are requesting a non-existing ID).
 
+TODO: explain environment variables (bearerToken specifically)
+
 To run the tests, execute the following command in the root folder of your project:
 
 ```plaintext
