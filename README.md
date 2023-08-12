@@ -1,6 +1,6 @@
 # Express Events Starter
 
-This repository contains starter code for the Express Events exercise. There are two folders in this repository: `starter` and `solution`.
+This repository contains starter code for the Express Events exercise. There are two two types of folders in this repository: `starter` and `solution`. `starter` only contains boilerplate code for the given course exercise, while `solution` contains the entire code that solves the given problem.
 
 ## How to get started
 
