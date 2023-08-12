@@ -4,6 +4,7 @@ import createUser from "../services/users/createUser.js";
 import getUserById from "../services/users/getUserById.js";
 import deleteUserById from "../services/users/deleteUserById.js";
 import updateUserById from "../services/users/updateUserById.js";
+import auth from "../middleware/auth.js";
 
 const router = Router();
 
@@ -12,7 +13,7 @@ router.get("/", (req, res) => {
   res.json(users);
 });
 
-router.post("/", (req, res) => {
+router.post("/", auth, (req, res) => {
   const { name, password, username, image } = req.body;
   const newUser = createUser(username, name, password, image);
   res.status(201).json(newUser);
@@ -29,7 +30,7 @@ router.get("/:id", (req, res) => {
   }
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", auth, (req, res) => {
   const { id } = req.params;
   const user = deleteUserById(id);
 
@@ -45,7 +46,7 @@ router.delete("/:id", (req, res) => {
   }
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", auth, (req, res) => {
   const { id } = req.params;
   const { name, password, username, image } = req.body;
   const user = updateUserById(id, { name, password, username, image });

@@ -4,6 +4,7 @@ import createCategory from "../services/categories/createCategory.js";
 import getCategoryById from "../services/categories/getCategoryById.js";
 import deleteCategoryById from "../services/categories/deleteCategoryById.js";
 import updateCategoryById from "../services/categories/updateCategoryById.js";
+import auth from "../middleware/auth.js";
 
 const router = Router();
 
@@ -12,7 +13,7 @@ router.get("/", (req, res) => {
   res.json(categories);
 });
 
-router.post("/", (req, res) => {
+router.post("/", auth, (req, res) => {
   const { name } = req.body;
   const newCategory = createCategory(name);
 
@@ -30,7 +31,7 @@ router.get("/:id", (req, res) => {
   }
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", auth, (req, res) => {
   const { id } = req.params;
   const category = deleteCategoryById(id);
 
@@ -46,7 +47,7 @@ router.delete("/:id", (req, res) => {
   }
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", auth, (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
   const category = updateCategoryById(id, { name });
