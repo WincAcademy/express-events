@@ -13,11 +13,12 @@ However, we recommend you to try solving the exercises as independently as possi
 To start the app, follow these steps:
 
 1. Create a `.env` file in the root directory of the `starter` or `solution` folder.
-2. Replace the values for `SECRET_KEY` and `SENTRY_DSN` with your own values.
+2. Replace the values for `AUTH_SECRET_KEY` and `SENTRY_DSN` with your own values.
 
 ```plaintext
-SECRET_KEY=your_secret_key_here
+AUTH_SECRET_KEY=your_secret_key_here
 SENTRY_DSN=your_sentry_dsn_here
+```
 
 ## Running tests
 
@@ -25,11 +26,8 @@ Tests are created using Newman, a command-line tool that is able to automate exe
 
 To run the tests, execute the following command in the root folder of your project:
 
-```
-
-    npm test
-
+```plaintext
+npm test
 ```
 
 If you have a look at the `package.json` file, you will see that it executes the collection stored in the `postman` folder of the repo root.
-```
