@@ -9,7 +9,8 @@ import auth from "../middleware/auth.js";
 const router = Router();
 
 router.get("/", (req, res) => {
-  const events = getEvents();
+  const { title, location } = req.query;
+  const events = getEvents(title, location);
   res.json(events);
 });
 
@@ -48,7 +49,7 @@ router.get("/:id", (req, res) => {
   }
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", auth, (req, res) => {
   const { id } = req.params;
   const event = deleteEventById(id);
 
@@ -64,7 +65,7 @@ router.delete("/:id", (req, res) => {
   }
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", auth, (req, res) => {
   const { id } = req.params;
   const {
     name,
