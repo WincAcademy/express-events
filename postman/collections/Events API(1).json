@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "3d44bf26-4389-4469-bea4-4b4c47f65611",
+		"_postman_id": "f367548c-4cf7-422f-a787-35c1bf75496d",
 		"name": "Events API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_uid": "17255397-3d44bf26-4389-4469-bea4-4b4c47f65611"
+		"_uid": "17255397-f367548c-4cf7-422f-a787-35c1bf75496d"
 	},
 	"item": [
 		{
@@ -15,7 +15,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5416a243-663c-406d-a10d-4976ed13779e",
+								"id": "db63bc32-3e64-4252-b0f5-15f2de735460",
 								"exec": [
 									"",
 									"pm.test(\"Response status code is 200\", function () {",
@@ -78,7 +78,7 @@
 							}
 						}
 					],
-					"id": "40af08e1-f6f3-407c-91be-e59687c6768f",
+					"id": "35eae756-132c-4bfa-bf6b-95879ae183e3",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -97,7 +97,7 @@
 					},
 					"response": [
 						{
-							"id": "6d0ba894-9dda-4066-80f4-6e6543785689",
+							"id": "234b7375-008b-411c-8e8e-860fce947d6a",
 							"name": "Success",
 							"originalRequest": {
 								"method": "GET",
@@ -135,7 +135,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d21e91d2-90ba-4303-997b-9a15a71e003a",
+								"id": "002cc706-31ff-46fa-b608-4821b43af49e",
 								"exec": [
 									"",
 									"pm.test(\"Response status code is 200\", function () {",
@@ -216,7 +216,7 @@
 							}
 						}
 					],
-					"id": "33d709b7-f273-49ba-a8d7-dfa31328dcad",
+					"id": "8bbb43a7-5664-47da-a9ac-367b13345022",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -236,7 +236,7 @@
 					},
 					"response": [
 						{
-							"id": "713da412-fe8c-4bc4-878b-c8dbf8f4d445",
+							"id": "74f0af72-714c-44ca-91ae-f91b8590a7f5",
 							"name": "Success",
 							"originalRequest": {
 								"method": "GET",
@@ -268,7 +268,7 @@
 							"body": "{\n    \"id\": 1,\n    \"username\": \"john_doe\",\n    \"password\": \"p@ssw0rd1\"\n}"
 						},
 						{
-							"id": "84755787-ace3-479d-8d7a-b4b8837806b3",
+							"id": "7cd55846-a450-40be-ad42-bb6ce424d63d",
 							"name": "Non-existing ID",
 							"originalRequest": {
 								"method": "GET",
@@ -307,7 +307,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1ef46ee0-a2aa-4c9c-b391-b19b72891c5e",
+								"id": "d73b4cf0-faed-44e3-a433-1b6ddec1071c",
 								"exec": [
 									"",
 									"pm.test(\"Response status code is 201\", function () {",
@@ -343,13 +343,22 @@
 							}
 						}
 					],
-					"id": "3913c54e-b535-43ec-8780-b1a4205ae096",
+					"id": "40017c29-8e0a-4815-bfe3-728596381f4a",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{bearerToken}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"username\": \"john_wick\",\n    \"password\": \"p@ssw0rd999\",\n    \"name\": \"John Wick\",\n    \"image\": \"https://images2.alphacoders.com/131/1314280.jpeg\"\n}",
@@ -371,7 +380,7 @@
 					},
 					"response": [
 						{
-							"id": "3926ad52-1c30-4adc-97a5-419c29c17c00",
+							"id": "5245e411-c145-412d-96ee-0fb90bcdbce6",
 							"name": "Success",
 							"originalRequest": {
 								"method": "POST",
@@ -418,7 +427,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "3e96a1ff-00d1-497a-9a92-9b0e234e3bd5",
+								"id": "d3bd99f3-eac3-4169-8522-203caddab35d",
 								"exec": [
 									"",
 									"pm.test(\"Response status code is 200\", function () {",
@@ -447,13 +456,19 @@
 							}
 						}
 					],
-					"id": "08236c78-6fbb-4594-b3ab-2b9f0bc973fe",
+					"id": "6ee81c21-3920-47df-8c95-5467c90caa11",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{bearerToken}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{baseUrl}}/users/2",
 							"host": [
@@ -467,7 +482,7 @@
 					},
 					"response": [
 						{
-							"id": "feb1ffd3-777e-4044-8764-10b5e6f5e38e",
+							"id": "c6a6b7ef-785a-4c40-9fa1-169c210919fb",
 							"name": "Success (Update password)",
 							"originalRequest": {
 								"method": "PUT",
@@ -506,7 +521,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "cec040a7-3dfd-425f-b413-670352aef3a6",
+								"id": "288ca4c7-f1a0-4171-a6e1-6d09e3859795",
 								"exec": [
 									"",
 									"pm.test(\"Response status code is 200\", function () {",
@@ -534,13 +549,19 @@
 							}
 						}
 					],
-					"id": "cca435d4-3617-40dd-9aaa-d0bb25161954",
+					"id": "db8b8e20-65b9-4945-805a-d0b84956759d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{bearerToken}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{baseUrl}}/users/2",
 							"host": [
@@ -554,7 +575,7 @@
 					},
 					"response": [
 						{
-							"id": "48284eb3-9823-4e4e-884f-54775df8782b",
+							"id": "d6af01c4-961e-4af6-a6c6-976713152235",
 							"name": "Success (Delete user 2)",
 							"originalRequest": {
 								"method": "DELETE",
@@ -580,7 +601,7 @@
 					]
 				}
 			],
-			"id": "15d3a75e-76c3-49fc-a313-190486f0b0d4",
+			"id": "ad857a93-4e49-46f8-a983-2f442b0a5633",
 			"description": "REST API endpoints for managing users."
 		},
 		{
@@ -592,7 +613,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "3710d129-fdb3-4377-9d96-133ca0a1727f",
+								"id": "af6bc939-eda4-4958-a43e-a2de0122cf67",
 								"exec": [
 									"",
 									"pm.test(\"Response status code is 200\", function () {",
@@ -608,7 +629,7 @@
 							}
 						}
 					],
-					"id": "8a1ed288-bf46-48ab-8e34-ef52c059a08c",
+					"id": "e1d6a912-f143-40c2-aaf5-7bfabd2c5687",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -616,18 +637,24 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/events",
+							"raw": "{{baseUrl}}/events?location=My+back+yard",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"events"
+							],
+							"query": [
+								{
+									"key": "location",
+									"value": "My+back+yard"
+								}
 							]
 						}
 					},
 					"response": [
 						{
-							"id": "66c5903c-a03f-4df7-9177-471090c3270d",
+							"id": "5ca3344d-84d2-402b-a6cc-69e266b9f0aa",
 							"name": "Success",
 							"originalRequest": {
 								"method": "GET",
@@ -665,7 +692,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e1fa0896-ec8f-407f-ac38-a010b5bdfe38",
+								"id": "f169877c-4756-4f40-8c18-5f994c6c8f5e",
 								"exec": [
 									"",
 									"pm.test(\"Response status code is 200\", function () {",
@@ -702,7 +729,7 @@
 							}
 						}
 					],
-					"id": "5cb89197-5488-48db-8c3a-97d6a519e27d",
+					"id": "165a68ba-8c8d-4d64-aca9-1d820817b3d4",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -722,7 +749,7 @@
 					},
 					"response": [
 						{
-							"id": "c1082db5-8435-412c-92e4-265da8e30926",
+							"id": "f7bb9722-7088-4db1-99ce-ffca52a6a5d9",
 							"name": "Success",
 							"originalRequest": {
 								"method": "GET",
@@ -754,7 +781,7 @@
 							"body": "{\n    \"id\": 1,\n    \"createdBy\": 1,\n    \"title\": \"Trampoline party\",\n    \"description\": \"Bounce around with your friends\",\n    \"image\": \"https://i.pinimg.com/736x/3d/2f/af/3d2faf4e3188d34a9fcdc00df59e77b0.jpg\",\n    \"categoryIds\": [2],\n    \"location\": \"My back yard\",\n    \"startTime\": \"2023-03-10T18:00\",\n    \"endTime\": \"2023-03-10T17:00:00.000Z\"\n}"
 						},
 						{
-							"id": "d067050f-9561-454a-8d7a-2181b07d99b9",
+							"id": "a56ca427-332f-40b1-96ee-6a2f1ab9668f",
 							"name": "Non-existing ID",
 							"originalRequest": {
 								"method": "GET",
@@ -793,7 +820,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "434135a3-3b0b-4057-9525-6bccaf61a933",
+								"id": "beb382a1-6fe8-49ab-b341-279df206f096",
 								"exec": [
 									"pm.test(\"Response status code is 201\", function () {",
 									"  pm.response.to.have.status(201);",
@@ -819,13 +846,19 @@
 							}
 						}
 					],
-					"id": "9737d830-6fa5-42a1-8785-f03c3299dff0",
+					"id": "f771a5db-507d-4710-a4eb-f812e028b41d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{bearerToken}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n      \"createdBy\": 1,\n      \"title\": \"Boardgame party\",\n      \"description\": \"Turn off with friends or family through playing some nice games\",\n      \"image\": \"https://image.cnbcfm.com/api/v1/image/104151701-GettyImages-143949731.jpg?\",\n      \"categoryIds\": [2],\n      \"location\": \"Townhall\",\n      \"startTime\": \"2023-03-10T18:00\",\n      \"endTime\": \"2023-03-10T17:00:00.000Z\"\n    }",
@@ -847,7 +880,7 @@
 					},
 					"response": [
 						{
-							"id": "ad1e3bd1-0312-474e-a890-635c535f3342",
+							"id": "a88af8ff-8441-4232-83fd-585281ed0551",
 							"name": "Success",
 							"originalRequest": {
 								"method": "POST",
@@ -894,7 +927,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "87d062af-fe0a-4b0c-8420-a30cabaf2d39",
+								"id": "65214ce7-5e72-4a4b-9fb8-9a3c43c7d224",
 								"exec": [
 									"",
 									"pm.test(\"Response status code is 200\", function () {",
@@ -929,13 +962,19 @@
 							}
 						}
 					],
-					"id": "cd8ed67d-f046-4716-9e69-c4e02480d431",
+					"id": "230ce12f-d1b6-4232-b5d8-3181887cc2a4",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{bearerToken}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"something_unknown\": \"My Boat House\"\n}",
@@ -958,7 +997,7 @@
 					},
 					"response": [
 						{
-							"id": "6a070a3d-f0de-4bc7-914f-d102e0d850cf",
+							"id": "acb58412-8ce9-4c4d-945f-4f113baea421",
 							"name": "Success (Update location)",
 							"originalRequest": {
 								"method": "PUT",
@@ -1006,7 +1045,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "cbd03561-3918-4e4c-829b-70591c5c4479",
+								"id": "c79eba5c-4119-45dc-8767-f13d22012bb8",
 								"exec": [
 									"",
 									"pm.test(\"Response status code is 200\", function () {",
@@ -1045,13 +1084,19 @@
 							}
 						}
 					],
-					"id": "5c0b3d72-6349-427a-9f87-23db47a86fe0",
+					"id": "4e4c64d4-d821-4f3d-bc21-d28849e7c8ec",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{bearerToken}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{baseUrl}}/events/2",
 							"host": [
@@ -1065,7 +1110,7 @@
 					},
 					"response": [
 						{
-							"id": "3881fcdd-3fa0-4ea9-b5c5-cb11a1858f10",
+							"id": "9001ddf5-87e9-4c36-a8df-870dac7a3596",
 							"name": "Success (Delete user 2)",
 							"originalRequest": {
 								"method": "DELETE",
@@ -1091,7 +1136,7 @@
 					]
 				}
 			],
-			"id": "3d2bea0c-9154-4efc-916c-cb28ed9256ac",
+			"id": "a28957c0-3a78-4669-ab21-7c4b9ffa5ad2",
 			"description": "REST API endpoints for managing events."
 		},
 		{
@@ -1103,7 +1148,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1453b862-bfb8-48e8-a37b-c7706917d8cb",
+								"id": "b840a306-67b1-4968-917d-1605f11bfc38",
 								"exec": [
 									"",
 									"pm.test(\"Response status code is 200\", function () {",
@@ -1121,7 +1166,7 @@
 							}
 						}
 					],
-					"id": "e301fc48-bc9c-46ae-b4b4-f07c81930d6e",
+					"id": "346b128a-b77a-46d6-99cf-9ac188189eb4",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1140,7 +1185,7 @@
 					},
 					"response": [
 						{
-							"id": "b98ad625-0061-48f0-96ae-18a59cb9f8ca",
+							"id": "fa900ea5-6057-4ee9-bb33-7bccb54f5637",
 							"name": "Success",
 							"originalRequest": {
 								"method": "GET",
@@ -1183,7 +1228,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "06262898-8b49-4e82-ab9f-8db21fada388",
+								"id": "8ef943df-a538-4652-8661-22e8279acb37",
 								"exec": [
 									"",
 									"pm.test(\"Response status code is 200\", function () {",
@@ -1209,13 +1254,15 @@
 									"",
 									"pm.test(\"Response time is less than 200ms\", function () {",
 									"    pm.expect(pm.response.responseTime).to.be.below(200);",
-									"});"
+									"});",
+									"",
+									""
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
-					"id": "83b6f698-a423-4d5f-97fb-be495da4a416",
+					"id": "0d45682f-9e91-45d4-a98e-15403366295d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1235,7 +1282,7 @@
 					},
 					"response": [
 						{
-							"id": "931c4642-60bd-49ec-81ac-4c74c5ea9743",
+							"id": "efbb8f90-c8c4-41d3-9a91-84006d525368",
 							"name": "Success",
 							"originalRequest": {
 								"method": "GET",
@@ -1271,7 +1318,7 @@
 							"body": "{\n    \"name\": \"sports\",\n    \"id\": 1\n}"
 						},
 						{
-							"id": "185dbd5a-061f-4f22-a88f-dc4955e76ba8",
+							"id": "530b4fd8-3781-4b83-b64e-8c25868a73e4",
 							"name": "Non-existing ID",
 							"originalRequest": {
 								"method": "GET",
@@ -1314,7 +1361,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "630e1036-51de-40ad-b84d-289acda7e795",
+								"id": "1d8a2da7-befb-419d-978c-e9fff1f58afb",
 								"exec": [
 									"",
 									"pm.test(\"Response status code is 200\", function () {",
@@ -1341,19 +1388,27 @@
 									"",
 									"pm.test(\"Response time is less than 200ms\", function () {",
 									"    pm.expect(pm.response.responseTime).to.be.below(200);",
-									"});"
+									"});",
+									"",
+									""
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
-					"id": "9d0e4a23-f689-4a3f-9e67-858baa0b5ae3",
+					"id": "a394f71a-a010-42f0-aa2c-032cfcb19d1a",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{bearerToken}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"My favorite category\"\n}",
@@ -1376,7 +1431,7 @@
 					},
 					"response": [
 						{
-							"id": "587754a3-c613-4839-b749-2ab37e761093",
+							"id": "5ceac3e6-87aa-4741-8f7f-337965f7d05f",
 							"name": "Success",
 							"originalRequest": {
 								"method": "PUT",
@@ -1421,7 +1476,7 @@
 							"body": "{\n    \"name\": \"sports\",\n    \"id\": 1\n}"
 						},
 						{
-							"id": "b762b2c5-5c6d-4a6f-8205-e64d3e9c2d99",
+							"id": "4fc50942-6491-4ff8-bc96-0cb99afb2e80",
 							"name": "Non-existing ID",
 							"originalRequest": {
 								"method": "PUT",
@@ -1473,7 +1528,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "18e5c8f5-6121-4e65-97b0-8429dd944677",
+								"id": "23a14dd6-3cf9-4cdd-8a8e-1ecc68733837",
 								"exec": [
 									"",
 									"pm.test(\"Response status code is 200\", function () {",
@@ -1523,19 +1578,27 @@
 									"    responseData.category.forEach(function (category) {",
 									"        pm.expect(category).to.have.property('id').that.is.a('string');",
 									"    });",
-									"});"
+									"});",
+									"",
+									""
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
-					"id": "2e8584e1-6852-44ac-93b0-55cc73736235",
+					"id": "f9e88f58-4f8a-49d5-ab03-42e24b57a3cf",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{bearerToken}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{baseUrl}}/categories/2",
 							"host": [
@@ -1549,7 +1612,7 @@
 					},
 					"response": [
 						{
-							"id": "2626993a-bd93-4f20-8984-5fb46f61c291",
+							"id": "b1f92936-66f9-4836-a097-235b35231ddd",
 							"name": "Success",
 							"originalRequest": {
 								"method": "DELETE",
@@ -1585,7 +1648,7 @@
 							"body": "{\n    \"name\": \"sports\",\n    \"id\": 1\n}"
 						},
 						{
-							"id": "b065e3f4-bfae-4720-9a6f-e27c3c284558",
+							"id": "ee7b6d0c-5291-454f-b687-1c5e8f866fa0",
 							"name": "Non-existing ID",
 							"originalRequest": {
 								"method": "DELETE",
@@ -1628,6 +1691,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "8c692103-acae-4729-8e9e-505b11af82ab",
 								"exec": [
 									"pm.test(\"Response status code is 201\", function () {",
 									"    pm.expect(pm.response.code).to.equal(201);",
@@ -1661,18 +1725,23 @@
 									"  pm.expect(pm.response.responseTime).to.be.below(200);",
 									"});"
 								],
-								"type": "text/javascript",
-								"id": "3dd40f9f-1b16-42f1-adb0-8d2e26b9ae7e"
+								"type": "text/javascript"
 							}
 						}
 					],
-					"id": "47f4b9ad-c0e3-4b1e-a2a5-be061e9a8750",
+					"id": "3ab0bace-af70-42a7-bc95-acd29d8cf9dc",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{bearerToken}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"networking\"\n}",
@@ -1695,8 +1764,82 @@
 					"response": []
 				}
 			],
-			"id": "4f9f4be6-885c-429e-a55f-062bb883e00c",
+			"id": "0b5e2d25-8327-49d4-9155-e425d38ad066",
 			"description": "REST API endpoints for managing event categories."
+		},
+		{
+			"name": "Log in",
+			"id": "1357aff7-6284-4478-9cd2-3f2f7d26b912",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"ignacio_doe\",\n    \"password\": \"p@ssw0rd1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "81bcbe08-8beb-40f9-ab37-e28205bc2120",
+				"type": "text/javascript",
+				"exec": [
+					"pm.sendRequest({",
+					"    url: 'http://localhost:3000/login',",
+					"    method: 'POST',",
+					"    header: {",
+					"        'Content-Type': 'application/json'",
+					"    },",
+					"    body: {",
+					"        mode: 'raw',",
+					"        raw: JSON.stringify({",
+					"            username: 'ignacio_doe',",
+					"            password: 'p@ssw0rd1'",
+					"        })",
+					"    }",
+					"}, function (err, response) {",
+					"    if (err) {",
+					"        console.error('Login request failed:', err);",
+					"        return;",
+					"    }",
+					"    ",
+					"    var responseBody = JSON.parse(response.text());",
+					"    pm.environment.set('bearerToken', responseBody.token); // Assuming the token is in a 'token' property",
+					"});",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "855bedce-00f4-4d2c-874e-c851862bf1d1",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
