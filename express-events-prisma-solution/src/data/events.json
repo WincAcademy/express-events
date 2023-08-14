@@ -10,8 +10,8 @@
         "2"
       ],
       "location": "My back yard",
-      "startTime": "2023-03-10T18:00",
-      "endTime": "2023-03-10T17:00:00.000Z"
+      "startTime": "2023-03-10T18:00:00.000Z",
+      "endTime": "2023-03-10T19:00:00.000Z"
     },
     {
       "id": "2",
@@ -23,8 +23,8 @@
         "2"
       ],
       "location": "Blinded by the Lights Laser Tag, 15 Main St.",
-      "startTime": "2023-04-06T18:46",
-      "endTime": "2023-04-06T17:46"
+      "startTime": "2023-04-06T18:46:00.000Z",
+      "endTime": "2023-04-06T19:46:00.000Z"
     },
     {
       "id": "3",
