@@ -9,7 +9,8 @@ id = 5bb788ab-231e-4470-a8a5-7d3600ee6303
 
 [config.relations.collections]
 rootDirectory = postman/collections
-files[] = {"id":"17255397-f367548c-4cf7-422f-a787-35c1bf75496d","path":"Events API(1).json","metaData":{}}
+files[] = {"id":"17255397-af577c72-62af-4592-8334-987bbc3e921c","path":"Events API Negative.json","metaData":{}}
+files[] = {"id":"17255397-084a0c2b-d2e4-4f54-b5a5-5c43a1474469","path":"Events API.json","metaData":{}}
 
 [config.relations.collections.metaData]
 
