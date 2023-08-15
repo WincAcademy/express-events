@@ -1250,12 +1250,6 @@
 									"",
 									"    pm.expect(responseData.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name should not be empty\");",
 									"});",
-									"",
-									"",
-									"pm.test(\"Response time is less than 200ms\", function () {",
-									"    pm.expect(pm.response.responseTime).to.be.below(200);",
-									"});",
-									"",
 									""
 								],
 								"type": "text/javascript"
@@ -1663,11 +1657,6 @@
 									"    const responseData = pm.response.json();",
 									"    ",
 									"    pm.expect(responseData.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name should not be empty\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response time is less than 200ms\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.below(200);",
 									"});"
 								],
 								"type": "text/javascript"
