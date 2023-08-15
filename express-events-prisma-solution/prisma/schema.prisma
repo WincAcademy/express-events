@@ -29,7 +29,7 @@ model Event {
   userId      String
 
   categories Category[]
-  createdBy  User       @relation(fields: [userId], references: [id])
+  createdBy  User       @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@index([userId])
 }
