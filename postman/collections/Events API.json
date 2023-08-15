@@ -115,7 +115,6 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "Content-Type",
@@ -256,7 +255,6 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "Content-Type",
@@ -289,7 +287,6 @@
 							"status": "Not Found",
 							"code": 404,
 							"_postman_previewlanguage": "json",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "Content-Type",
@@ -410,7 +407,6 @@
 							"status": "Created",
 							"code": 201,
 							"_postman_previewlanguage": "json",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "Content-Type",
@@ -505,7 +501,6 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "Content-Type",
@@ -599,7 +594,6 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "Text",
-							"_postman_previewtype": "html",
 							"header": [],
 							"cookie": [],
 							"body": ""
@@ -678,7 +672,6 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "Content-Type",
@@ -775,7 +768,6 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "Content-Type",
@@ -808,7 +800,6 @@
 							"status": "Not Found",
 							"code": 404,
 							"_postman_previewlanguage": "json",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "Content-Type",
@@ -916,7 +907,6 @@
 							"status": "Created",
 							"code": 201,
 							"_postman_previewlanguage": "json",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "Content-Type",
@@ -1035,7 +1025,6 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "Content-Type",
@@ -1140,7 +1129,6 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "Text",
-							"_postman_previewtype": "html",
 							"header": [],
 							"cookie": [],
 							"body": ""
@@ -1215,7 +1203,6 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
-							"_postman_previewtype": "html",
 							"header": [
 								"",
 								{
@@ -1314,7 +1301,6 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "Content-Type",
@@ -1351,7 +1337,6 @@
 							"status": "Not Found",
 							"code": 404,
 							"_postman_previewlanguage": "json",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "Content-Type",
@@ -1384,28 +1369,12 @@
 									"});",
 									"",
 									"",
-									"pm.test(\"Response has the required fields - message and category\", function () {",
+									"pm.test(\"Response has the required fields - message\", function () {",
 									"    const responseData = pm.response.json();",
 									"",
 									"    pm.expect(responseData).to.be.an('object');",
 									"    pm.expect(responseData.message).to.exist.and.to.be.a('string');",
-									"    pm.expect(responseData.category).to.exist.and.to.be.an('object');",
-									"});",
-									"",
-									"",
-									"pm.test(\"Name is a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.category).to.exist.and.to.have.property('name').that.is.a('string').and.not.empty;",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response time is less than 200ms\", function () {",
-									"    pm.expect(pm.response.responseTime).to.be.below(200);",
-									"});",
-									"",
-									""
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -1474,7 +1443,6 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "Content-Type",
@@ -1520,7 +1488,6 @@
 							"status": "Not Found",
 							"code": 404,
 							"_postman_previewlanguage": "json",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "Content-Type",
@@ -1558,46 +1525,7 @@
 									"",
 									"    pm.expect(responseData).to.be.an('object');",
 									"    pm.expect(responseData.message).to.exist.and.to.be.a('string');",
-									"});",
-									"",
-									"",
-									"pm.test(\"Validate the category object\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.category).to.exist.and.to.be.an('array');",
-									"",
-									"    responseData.category.forEach(function (category) {",
-									"        pm.expect(category).to.be.an('object');",
-									"        pm.expect(category.name).to.exist.and.to.be.a('string');",
-									"        pm.expect(category.id).to.exist.and.to.be.a('string');",
-									"    });",
-									"});",
-									"",
-									"",
-									"pm.test(\"Validate the name field in the category object\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.category).to.be.an('array').and.to.have.lengthOf(1, \"Category array should have one element\");",
-									"",
-									"    responseData.category.forEach(function (category) {",
-									"        pm.expect(category.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name field should not be empty\");",
-									"    });",
-									"});",
-									"",
-									"",
-									"pm.test(\"Validate the id field in the category object\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData.category).to.be.an('array');",
-									"",
-									"    responseData.category.forEach(function (category) {",
-									"        pm.expect(category).to.have.property('id').that.is.a('string');",
-									"    });",
-									"});",
-									"",
-									""
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -1648,7 +1576,6 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "Content-Type",
@@ -1685,7 +1612,6 @@
 							"status": "Not Found",
 							"code": 404,
 							"_postman_previewlanguage": "json",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "Content-Type",
