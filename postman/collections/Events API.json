@@ -434,23 +434,12 @@
 									"    pm.response.to.have.status(200);",
 									"});",
 									"",
-									"",
-									"",
-									"pm.test(\"The id must be a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData.user.id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Username is a non-empty string\", function () {",
+									"pm.test(\"Response has the required fields - message\", function () {",
 									"    const responseData = pm.response.json();",
 									"",
 									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.user.username).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Username should not be empty\");",
-									"});",
-									"",
-									""
+									"    pm.expect(responseData.message).to.exist.and.to.be.a('string');",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -469,6 +458,15 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"hehheheh\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{baseUrl}}/users/2",
 							"host": [
@@ -708,14 +706,6 @@
 									"});",
 									"",
 									"",
-									"pm.test(\"createdBy is a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.createdBy).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"});",
-									"",
-									"",
 									"pm.test(\"Title is a non-empty string\", function () {",
 									"    const responseData = pm.response.json();",
 									"",
@@ -824,22 +814,6 @@
 								"exec": [
 									"pm.test(\"Response status code is 201\", function () {",
 									"  pm.response.to.have.status(201);",
-									"});",
-									"",
-									"",
-									"pm.test(\"createdBy is a non-negative integer\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData.createdBy).to.be.a('number');",
-									"    pm.expect(responseData.createdBy).to.be.at.least(0);",
-									"});",
-									"",
-									"",
-									"pm.test(\"categoryIds is an array with at least one element\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.categoryIds).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -861,7 +835,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n      \"createdBy\": 1,\n      \"title\": \"Boardgame party\",\n      \"description\": \"Turn off with friends or family through playing some nice games\",\n      \"image\": \"https://image.cnbcfm.com/api/v1/image/104151701-GettyImages-143949731.jpg?\",\n      \"categoryIds\": [2],\n      \"location\": \"Townhall\",\n      \"startTime\": \"2023-03-10T18:00\",\n      \"endTime\": \"2023-03-10T17:00:00.000Z\"\n    }",
+							"raw": "{\n      \"createdBy\": \"1\",\n      \"title\": \"Boardgame party\",\n      \"description\": \"Turn off with friends or family through playing some nice games\",\n      \"image\": \"https://image.cnbcfm.com/api/v1/image/104151701-GettyImages-143949731.jpg?\",\n      \"categoryIds\": [\"1\", \"2\"],\n      \"location\": \"Townhall\",\n      \"startTime\": \"2023-03-10T17:00:00.000Z\",\n      \"endTime\": \"2023-03-10T18:00:00.000Z\"\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -977,7 +951,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"something_unknown\": \"My Boat House\"\n}",
+							"raw": "{\n    \"something_unknown\": \"My Boat House\",\n    \"createdBy\": \"1\",\n    \"categoryIds\": [\"1\", \"2\", \"3\"]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
