@@ -71,7 +71,6 @@ router.put("/:id", auth, async (req, res, next) => {
     if (user) {
       res.status(200).send({
         message: `User with id ${id} successfully updated`,
-        user,
       });
     } else {
       res.status(404).json({

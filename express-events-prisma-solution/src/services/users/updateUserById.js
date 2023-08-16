@@ -7,7 +7,6 @@ const updateUserById = async (id, updatedUser) => {
     data: updatedUser,
   });
 
-  console.log(user);
   return user.count > 0 ? id : null;
 };
 
