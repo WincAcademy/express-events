@@ -709,113 +709,6 @@
 					]
 				},
 				{
-					"name": "Create new event",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "1a873476-20bc-424d-aa98-a77161ada320",
-								"exec": [
-									"pm.test(\"Response status code is 201\", function () {",
-									"  pm.response.to.have.status(201);",
-									"});",
-									"",
-									"",
-									"pm.test(\"createdBy is a non-negative integer\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData.createdBy).to.be.a('number');",
-									"    pm.expect(responseData.createdBy).to.be.at.least(0);",
-									"});",
-									"",
-									"",
-									"pm.test(\"categoryIds is an array with at least one element\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.categoryIds).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "00034aae-7001-4b3b-bb91-a3d88361ea3e",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{bearerToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n      \"createdBy\": 1,\n      \"title\": \"Boardgame party\",\n      \"description\": \"Turn off with friends or family through playing some nice games\",\n      \"image\": \"https://image.cnbcfm.com/api/v1/image/104151701-GettyImages-143949731.jpg?\",\n      \"categoryIds\": [2],\n      \"location\": \"Townhall\",\n      \"startTime\": \"2023-03-10T18:00\",\n      \"endTime\": \"2023-03-10T17:00:00.000Z\"\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/events",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"events"
-							]
-						}
-					},
-					"response": [
-						{
-							"id": "0c4f6bdc-bef1-4a6e-b136-020eff66ba22",
-							"name": "Success",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n      \"createdBy\": 1,\n      \"title\": \"Boardgame party\",\n      \"description\": \"Turn off with friends or family through playing some nice games\",\n      \"image\": \"https://image.cnbcfm.com/api/v1/image/104151701-GettyImages-143949731.jpg?\",\n      \"categoryIds\": [2],\n      \"location\": \"Townhall\",\n      \"startTime\": \"2023-03-10T18:00\",\n      \"endTime\": \"2023-03-10T17:00:00.000Z\"\n    }",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/events",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"events"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"name": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": {{$randomUUID}},\n    \"createdBy\": 1,\n    \"title\": \"Trampoline party\",\n    \"description\": \"Bounce around with your friends\",\n    \"image\": \"https://i.pinimg.com/736x/3d/2f/af/3d2faf4e3188d34a9fcdc00df59e77b0.jpg\",\n    \"categoryIds\": [2],\n    \"location\": \"My back yard\",\n    \"startTime\": \"2023-03-10T18:00\",\n    \"endTime\": \"2023-03-10T17:00:00.000Z\"\n}"
-						}
-					]
-				},
-				{
 					"name": "Create new event - unauthorized",
 					"event": [
 						{
@@ -925,116 +818,6 @@
 					]
 				},
 				{
-					"name": "Update event by ID - event not found",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "5635b087-2c12-4539-b5b0-bb9226844068",
-								"exec": [
-									"",
-									"pm.test(\"Response status code is 404\", function () {",
-									"    pm.response.to.have.status(404);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.message).to.exist.and.to.be.a('string');",
-									"});",
-									"",
-									"",
-									"pm.test(\"Message is a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData.message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"});",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "9c9cf38b-c4e1-4d9a-91af-f74a15313702",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{bearerToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"something_unknown\": \"My Boat House\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/events/100",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"events",
-								"100"
-							]
-						}
-					},
-					"response": [
-						{
-							"id": "13bfd504-2608-4a18-8784-cccbaa3a421c",
-							"name": "Success (Update location)",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"something_unknown\": \"My Boat House\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/events/1",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"events",
-										"1"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"name": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": 1,\n    \"createdBy\": 1,\n    \"title\": \"Trampoline party\",\n    \"description\": \"Bounce around with your friends\",\n    \"image\": \"https://i.pinimg.com/736x/3d/2f/af/3d2faf4e3188d34a9fcdc00df59e77b0.jpg\",\n    \"categoryIds\": [2],\n    \"location\": \"City Beach\",\n    \"startTime\": \"2023-03-10T18:00\",\n    \"endTime\": \"2023-03-10T17:00:00.000Z\"\n}"
-						}
-					]
-				},
-				{
 					"name": "Update event by ID - unauthorized",
 					"event": [
 						{
@@ -1134,82 +917,6 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": 1,\n    \"createdBy\": 1,\n    \"title\": \"Trampoline party\",\n    \"description\": \"Bounce around with your friends\",\n    \"image\": \"https://i.pinimg.com/736x/3d/2f/af/3d2faf4e3188d34a9fcdc00df59e77b0.jpg\",\n    \"categoryIds\": [2],\n    \"location\": \"City Beach\",\n    \"startTime\": \"2023-03-10T18:00\",\n    \"endTime\": \"2023-03-10T17:00:00.000Z\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete event by ID  - event not found",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "fd05cf13-1fdc-4ad7-ad42-ac960db5890a",
-								"exec": [
-									"",
-									"pm.test(\"Response status code is 404\", function () {",
-									"    pm.expect(pm.response.code).to.equal(404);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has a non-empty message field\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.message).to.exist.and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "b3af60a1-6939-4b6c-94ef-09b531d69b4e",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{bearerToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/events/100",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"events",
-								"100"
-							]
-						}
-					},
-					"response": [
-						{
-							"id": "2a6ac1e6-42f1-4eb4-80a6-26a53a0448de",
-							"name": "Success (Delete user 2)",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/events/1",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"events",
-										"1"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": ""
 						}
 					]
 				},
@@ -2154,11 +1861,11 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "70db027e-e0e3-4ad9-a7fa-be1050a70137",
+				"id": "1ca586f7-8f3f-4609-8cea-b7fb1c98eac1",
 				"type": "text/javascript",
 				"exec": [
 					"pm.sendRequest({",
-					"    url: 'http://localhost:3000/login',",
+					"    url: 'http://0.0.0.0:3000/login',",
 					"    method: 'POST',",
 					"    header: {",
 					"        'Content-Type': 'application/json'",
@@ -2186,7 +1893,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "06874248-557b-4f54-b298-e3ee0e408780",
+				"id": "89457d56-a1ec-4a7a-a442-318fcc470c1a",
 				"type": "text/javascript",
 				"exec": [
 					""

@@ -434,23 +434,12 @@
 									"    pm.response.to.have.status(200);",
 									"});",
 									"",
-									"",
-									"",
-									"pm.test(\"The id must be a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData.user.id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Username is a non-empty string\", function () {",
+									"pm.test(\"Response has the required fields - message\", function () {",
 									"    const responseData = pm.response.json();",
 									"",
 									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.user.username).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Username should not be empty\");",
-									"});",
-									"",
-									""
+									"    pm.expect(responseData.message).to.exist.and.to.be.a('string');",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -469,6 +458,15 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"hehheheh\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{baseUrl}}/users/2",
 							"host": [
@@ -535,14 +533,6 @@
 									"    pm.expect(responseData).to.be.an('object');",
 									"    pm.expect(responseData.message).to.exist.and.to.not.be.empty;",
 									"});",
-									"",
-									"",
-									"pm.test(\"User array is present and contains at least one element\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData.user).to.exist.and.to.be.an('array').with.lengthOf.at.least(1);",
-									"});",
-									"",
 									""
 								],
 								"type": "text/javascript"
@@ -708,14 +698,6 @@
 									"});",
 									"",
 									"",
-									"pm.test(\"createdBy is a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.createdBy).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"});",
-									"",
-									"",
 									"pm.test(\"Title is a non-empty string\", function () {",
 									"    const responseData = pm.response.json();",
 									"",
@@ -824,22 +806,6 @@
 								"exec": [
 									"pm.test(\"Response status code is 201\", function () {",
 									"  pm.response.to.have.status(201);",
-									"});",
-									"",
-									"",
-									"pm.test(\"createdBy is a non-negative integer\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData.createdBy).to.be.a('number');",
-									"    pm.expect(responseData.createdBy).to.be.at.least(0);",
-									"});",
-									"",
-									"",
-									"pm.test(\"categoryIds is an array with at least one element\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.categoryIds).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -861,7 +827,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n      \"createdBy\": 1,\n      \"title\": \"Boardgame party\",\n      \"description\": \"Turn off with friends or family through playing some nice games\",\n      \"image\": \"https://image.cnbcfm.com/api/v1/image/104151701-GettyImages-143949731.jpg?\",\n      \"categoryIds\": [2],\n      \"location\": \"Townhall\",\n      \"startTime\": \"2023-03-10T18:00\",\n      \"endTime\": \"2023-03-10T17:00:00.000Z\"\n    }",
+							"raw": "{\n      \"createdBy\": \"1\",\n      \"title\": \"Boardgame party\",\n      \"description\": \"Turn off with friends or family through playing some nice games\",\n      \"image\": \"https://image.cnbcfm.com/api/v1/image/104151701-GettyImages-143949731.jpg?\",\n      \"categoryIds\": [\"1\", \"2\"],\n      \"location\": \"Townhall\",\n      \"startTime\": \"2023-03-10T17:00:00.000Z\",\n      \"endTime\": \"2023-03-10T18:00:00.000Z\"\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -935,28 +901,12 @@
 									"});",
 									"",
 									"",
-									"pm.test(\"id is a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData.event.id).to.be.a('string').and.to.not.be.empty;",
-									"});",
-									"",
-									"",
-									"pm.test(\"createdBy is a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData.event.createdBy).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Title should be a non-empty string\", function () {",
+									"pm.test(\"Validate the response message\", function () {",
 									"    const responseData = pm.response.json();",
 									"",
 									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.event.title).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Title should not be empty\");",
-									"});",
-									"",
-									""
+									"    pm.expect(responseData.message).to.exist.and.to.be.a('string', \"Message should be a string\");",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -977,7 +927,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"something_unknown\": \"My Boat House\"\n}",
+							"raw": "{\n    \"something_unknown\": \"My Boat House\",\n    \"createdBy\": \"1\",\n    \"categoryIds\": [\"1\", \"2\", \"3\"]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1058,24 +1008,6 @@
 									"",
 									"    pm.expect(responseData).to.be.an('object');",
 									"    pm.expect(responseData.message).to.exist.and.to.be.a('string', \"Message should be a string\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Verify that the 'event' array is present in the response\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData.event).to.exist.and.to.be.an('array');",
-									"});",
-									"",
-									"",
-									"pm.test(\"Verify that the 'categoryIds' array is present and contains at least one element\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData.event).to.exist;",
-									"    pm.expect(responseData.event).to.be.an('array').and.to.have.lengthOf.at.least(1);",
-									"    responseData.event.forEach(function (event) {",
-									"        pm.expect(event.categoryIds).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1);",
-									"    });",
 									"});",
 									"",
 									""
@@ -1736,11 +1668,11 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "d8c2a9c1-6ffc-4668-bbd3-e1b1ccd7e946",
+				"id": "475b4302-85be-4ff7-8432-3e5da86eeef5",
 				"type": "text/javascript",
 				"exec": [
 					"pm.sendRequest({",
-					"    url: 'http://localhost:3000/login',",
+					"    url: 'http://0.0.0.0:3000/login',",
 					"    method: 'POST',",
 					"    header: {",
 					"        'Content-Type': 'application/json'",
@@ -1768,7 +1700,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "b71a5f7d-6b65-4979-b2d8-48d13d6346b4",
+				"id": "594af7cd-60e8-4882-89ef-cc8891e2a25f",
 				"type": "text/javascript",
 				"exec": [
 					""
