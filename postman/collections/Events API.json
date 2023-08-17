@@ -1668,11 +1668,11 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "d8c2a9c1-6ffc-4668-bbd3-e1b1ccd7e946",
+				"id": "475b4302-85be-4ff7-8432-3e5da86eeef5",
 				"type": "text/javascript",
 				"exec": [
 					"pm.sendRequest({",
-					"    url: 'http://localhost:3000/login',",
+					"    url: 'http://0.0.0.0:3000/login',",
 					"    method: 'POST',",
 					"    header: {",
 					"        'Content-Type': 'application/json'",
@@ -1700,7 +1700,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "b71a5f7d-6b65-4979-b2d8-48d13d6346b4",
+				"id": "594af7cd-60e8-4882-89ef-cc8891e2a25f",
 				"type": "text/javascript",
 				"exec": [
 					""
